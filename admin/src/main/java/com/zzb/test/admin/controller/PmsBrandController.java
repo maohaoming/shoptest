@@ -22,7 +22,7 @@ import java.util.List;
  * 品牌管理Controller
  * Created by zzb on 2019/11/15 10:28
  */
-@Api(tags = "PmsBrandController: 商品品牌管理")
+@Api(tags = "PmsBrandController",description = "商品品牌管理")
 @Controller
 public class PmsBrandController {
 

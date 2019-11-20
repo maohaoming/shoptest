@@ -20,12 +20,16 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createApi(){
-        return new Docket(DocumentationType.SPRING_WEB)
+        return new Docket(DocumentationType.SWAGGER_2)
                 //文档head主体
                 .apiInfo(this.apiInfo())
                 //生成Controller的api文档
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.zzb.test.admin.controller"))
+                //为有@Api注解的Controller生成API文档
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                //为有@ApiOperation注解的方法生成API文档
+//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build();
     }
