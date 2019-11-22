@@ -32,15 +32,31 @@
         </jdbcConnection>
         <!--指定生成model的路径-->
         <javaModelGenerator targetPackage="com.zzb.test.admin.mbg.model"
-                            targetProject="admin\src\main\java"/>
+                            targetProject="shoptest\admin\src\main\java"/>
         <!--指定生成mapper接口的路径-->
         <sqlMapGenerator targetPackage="com.zzb.test.admin.mbg.mapper"
-                         targetProject="admin\src\main\java"/>
+                         targetProject="shoptest\admin\src\main\java"/>
         <!--指定生成mapper.xml的路径-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.zzb.test.admin.mbg.mapper"
-                             targetProject="admin\src\main\java"/>
+                             targetProject="shoptest\admin\src\main\java"/>
         <!--生成全部表tableName设为%-->
+
+        <!--商品品牌表-->
         <table tableName="pms_brand"></table>
+        <!--用户表-->
+        <table tableName="ums_admin"></table>
+        <!--角色表-->
+        <table tableName="ums_role"></table>
+        <!--权限表-->
+        <table tableName="ums_permission"></table>
+        <!--用户角色关系表-->
+        <table tableName="ums_admin_role_relation"></table>
+        <!--角色权限关系表-->
+        <table tableName="ums_role_permission_relation"></table>
+        <!--用户权限关系表-->
+        <table tableName="ums_admin_permission_relation"></table>
+
+        <!--<table tableName=""></table>-->
     </context>
 
 </generatorConfiguration>

@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +35,7 @@ public class PmsBrandController {
     @ApiOperation("分页获取所有品牌")
     @RequestMapping(value = "/admin/brand/getList", method = RequestMethod.GET)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     public CommonResult<CommonPage<PmsBrand>> getList(@RequestParam(value = "pageNum", defaultValue = "1") @ApiParam("分页页码") Integer pageNum,
                                                            @RequestParam(value = "pageSize", defaultValue = "10") @ApiParam("每页数量") Integer pageSize){
         List<PmsBrand> list = pmsBrandService.getList(pageNum,pageSize);
@@ -44,6 +46,7 @@ public class PmsBrandController {
     @ApiOperation("添加品牌")
     @RequestMapping(value = "/admin/brand/insert", method = RequestMethod.POST)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:brand:create')")
     public CommonResult insert(@ApiParam("品牌信息") PmsBrand pmsBrand){
         int count = pmsBrandService.insert(pmsBrand);
         logger.info("添加品牌==》" + count);
@@ -56,6 +59,7 @@ public class PmsBrandController {
     @ApiOperation("删除品牌")
     @RequestMapping(value = "/admin/brand/delete", method = RequestMethod.POST)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:brand:delete')")
     public CommonResult delete(@ApiParam("品牌id") Long id){
         int count = pmsBrandService.delete(id);
         logger.info("删除品牌==》" + count);
@@ -68,6 +72,7 @@ public class PmsBrandController {
     @ApiOperation("更新品牌")
     @RequestMapping(value = "/admin/brand/update", method = RequestMethod.POST)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:brand:update')")
     public CommonResult update(@ApiParam("修改主体") PmsBrand pmsBrand){
         int count = pmsBrandService.update(pmsBrand);
         logger.info("更新品牌==》" + count);

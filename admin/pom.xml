@@ -19,6 +19,23 @@
 	</properties>
 
 	<dependencies>
+		<!--SpringSecurity依赖配置-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!--hutool工具包依赖配置-->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>4.5.7</version>
+		</dependency>
+		<!--JWT依赖配置-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
 		<!--redis依赖配置-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
