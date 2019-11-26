@@ -42,21 +42,21 @@
         <!--生成全部表tableName设为%-->
 
         <!--商品品牌表-->
-        <table tableName="pms_brand"></table>
-        <!--用户表-->
-        <table tableName="ums_admin"></table>
-        <!--角色表-->
-        <table tableName="ums_role"></table>
-        <!--权限表-->
-        <table tableName="ums_permission"></table>
-        <!--用户角色关系表-->
-        <table tableName="ums_admin_role_relation"></table>
-        <!--角色权限关系表-->
-        <table tableName="ums_role_permission_relation"></table>
-        <!--用户权限关系表-->
-        <table tableName="ums_admin_permission_relation"></table>
+        <!--<table tableName="pms_brand"></table>-->
+        <!--&lt;!&ndash;用户表&ndash;&gt;-->
+        <!--<table tableName="ums_admin"></table>-->
+        <!--&lt;!&ndash;角色表&ndash;&gt;-->
+        <!--<table tableName="ums_role"></table>-->
+        <!--&lt;!&ndash;权限表&ndash;&gt;-->
+        <!--<table tableName="ums_permission"></table>-->
+        <!--&lt;!&ndash;用户角色关系表&ndash;&gt;-->
+        <!--<table tableName="ums_admin_role_relation"></table>-->
+        <!--&lt;!&ndash;角色权限关系表&ndash;&gt;-->
+        <!--<table tableName="ums_role_permission_relation"></table>-->
+        <!--&lt;!&ndash;用户权限关系表&ndash;&gt;-->
+        <!--<table tableName="ums_admin_permission_relation"></table>-->
 
-        <!--<table tableName=""></table>-->
+        <table tableName=""></table>
     </context>
 
 </generatorConfiguration>
