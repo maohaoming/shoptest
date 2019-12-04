@@ -16,7 +16,7 @@ public class OrderTimeOutCancelTask {
     private static final Logger logger = LoggerFactory.getLogger(OrderTimeOutCancelTask.class);
 
     // TODO: 2019/11/26 Seconds Minutes Hours DayofMonth Month DayofWeek
-    @Scheduled(cron = "0 0/1 * ? * ?")
+    @Scheduled(cron = "0 0 0/1 ? * ?")
     public void cancelTimeOutOrder(){
 
         // TODO: 2019/11/26 从零点开始，每隔10分钟扫描一次，查询未支付订单

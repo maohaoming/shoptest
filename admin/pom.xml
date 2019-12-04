@@ -19,6 +19,11 @@
 	</properties>
 
 	<dependencies>
+		<!--Elasticsearch相关依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+		</dependency>
 		<!--SpringSecurity依赖配置-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
