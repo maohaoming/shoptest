@@ -3,33 +3,35 @@ package com.zzb.test.admin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * 由于某些方法要求参数在执行期间保持不变，因此将集合传递给自身可能会导致异常行为
+ * 初始化静态集合
+ * 对于集合类型的静态成员变量，不要使用集合实现来赋值，应该使用静态代码块赋值
  * Created by zzb on 2019/12/5 14:11
  */
 public class TestOne {
+    //反例
+    private static Map<String,String> mapNot = new HashMap<String,String>(){
+        {
+            put("ad","不使用");
+            put("adc","静态块赋值");
+        }
+    };
+    //正例
+    private static Map<String,String> mapYes = new HashMap<String,String>();
+    static{
+        mapYes.put("ad","使用");
+        mapYes.put("adc","静态块赋值");
+    };
 
     private static final Logger logger = LoggerFactory.getLogger(TestOne.class);
+
     public static void main(String[] args){
-        String[] strs = new String[]{"1","2","3","4","5","6"};
-        //反例
-        List<String> listBad = new ArrayList<>();
-        for (String str:strs) {
-            listBad.add(str);
-            logger.info("每次添加都要进行扩容");
-        }
 
-        //正例
-        List<String> list = new ArrayList<>(strs.length);
-        for (String str:strs) {
-            listBad.add(str);
-            logger.info("初始化扩容完成，此时添加不需要扩容");
-        }
+        logger.info("集合初始化反例:{}",mapNot);
 
+        logger.info("集合初始化正例:{}",mapYes);
     }
-
 }
