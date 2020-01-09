@@ -18,6 +18,12 @@ public interface UmsAdminService {
     UmsAdmin getAdminByUsername(String username);
 
     /**
+     * 获取当前用户
+     * @return
+     */
+    UmsAdmin getCurrentAdmin();
+
+    /**
      * 用户注册
      * @param umsAdminParam
      * @return

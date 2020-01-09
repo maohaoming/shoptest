@@ -60,5 +60,17 @@ jwt:
   expiration: 604800          #JWT的超期时间(60*60*24)
   tokenHead: Bearer           #JWT负载中拿到开头
 
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com   #oss 对外服务的访问域名
+    accessKeyId: LTAI4FgLGfKyzuyPJFk3DC61   #访问api时的身份id
+    accessKeySecret: W86IDlSsqy1BOOXbZeFQASxrVZamU8   # 加密签名和验证签名的密钥
+    bucketName: zzb-shop-oss    # oss存储空间名称
+    policy:
+      expire: 300   # 签名有效期 单位秒(S)
+      maxSize: 100  # 上传文件大小 单位兆(M)
+      callback: http://localhost:10017/admin/oss/callback  # 文件上传成功后的回调地址
+    dir:
+      prefix: shop/images/    # 上传文件夹路径前缀
 
 

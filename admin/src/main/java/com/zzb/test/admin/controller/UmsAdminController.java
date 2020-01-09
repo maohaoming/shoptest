@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +33,6 @@ public class UmsAdminController {
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
 
-    /**
-     * 用户注册
-     * @param umsAdminParam
-     * @return
-     */
     @ApiOperation("用户注册")
     @ResponseBody
     @RequestMapping(value = "/admin/register", method = RequestMethod.POST)
@@ -56,11 +53,6 @@ public class UmsAdminController {
         return CommonResult.success(tokenMap,"自动登录成功!!");
     }
 
-    /**
-     * 用户登录
-     * @param umsAdminParam
-     * @return
-     */
     @ApiOperation("用户登录")
     @ResponseBody
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
@@ -77,11 +69,15 @@ public class UmsAdminController {
         return CommonResult.success(tokenMap,"登录成功");
     }
 
-    /**
-     * 获取用户所有的权限
-     * @param adminId
-     * @return
-     */
+    @ApiOperation("获取用户登录信息")
+    @ResponseBody
+    @RequestMapping(value = "/admin/info", method = RequestMethod.GET)
+    public CommonResult info(Principal principal){
+        String username = principal.getName();
+        UmsAdmin umsAdmin = umsAdminService.getAdminByUsername(username);
+        return CommonResult.success(umsAdmin);
+    }
+
     @ApiOperation("获取用户所有权限")
     @ResponseBody
     @RequestMapping(value = "/admin/getPermissionList/{adminId}", method = RequestMethod.POST)

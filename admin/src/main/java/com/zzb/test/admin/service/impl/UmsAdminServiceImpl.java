@@ -13,7 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +57,15 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         List<UmsAdmin> admins = umsAdminMapper.selectByExample(uae);
         Assert.notNull(admins,"用户名不存在");
         return admins.get(0);
+    }
+
+    @Override
+    public UmsAdmin getCurrentAdmin() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        Principal principal = (Principal) authentication.getPrincipal();
+        String username = principal.getName();
+        return this.getAdminByUsername(username);
     }
 
     @Override
